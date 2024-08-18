@@ -22,5 +22,11 @@ namespace Core_Project.Controllers
             aboutManager.TUpdate(about);
             return RedirectToAction("Index", "Default");
         }
+
+        public IActionResult Test()
+        {
+            var val = "test";
+            return View();
+        }
     }
 }
