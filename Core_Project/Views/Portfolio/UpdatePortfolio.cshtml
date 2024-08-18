@@ -1,0 +1,24 @@
+﻿@model EntityLayer.Concrete.Portfolio
+@{
+    ViewData["Title"] = "AddPortfolio";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+@using(Html.BeginForm("UpdatePortfolio", "Portfolio", FormMethod.Post))
+{
+
+    @Html.HiddenFor(x=>x.PortfolioID)
+    @Html.Label("Proje Adı")
+    @Html.TextBoxFor(x=>x.Name, new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.Name)
+    <br />
+    @Html.Label("Fiyat")
+    @Html.TextBoxFor(x=>x.Price, new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.Price)
+    <br />
+    @Html.Label("Tamamlanma Oranı")
+    @Html.TextBoxFor(x=>x.Value, new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.Value)
+    <br />
+    <button class="btn btn-primary">Düzenle</button>
+}

@@ -1,0 +1,55 @@
+﻿@using EntityLayer.Concrete
+@model List<Message>
+
+@{
+
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Gelen Kutusu</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Gönderici Adı</th>
+                            <th>Mail Adresi</th>
+                            <th>Mesaj İçeriği</th>
+                            <th>Tarih</th>
+                            <th>Durum</th>
+                            <th>Sil</th>
+                            <th>Mesajı Gör</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model){
+                          <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Mail</td>
+                            <td>@item.Content.Substring(0,30)...</td>
+                            <td>@(((DateTime)item.Date).ToString("dd MMMMMMMM yyyy"))</td>
+                                @if (item.Status == true)
+                                {
+                                    <td>Okunmadı</td>
+                                }
+                                else
+                                {
+                                   <td>Okundu</td>
+                                }
+                             <td><a href="/ContactMessage/DeleteContactMessage/@item.MessageID" class="btn btn-outline-danger">Sil</a></td>
+                             <td><a href="/ContactMessage/ContactMessageDetails/@item.MessageID" class="btn btn-outline-info">Detaylar</a></td>
+                            </tr>
+                          }
+                        </tbody>
+                      </table>
+                      <br />
+                      <a href="/ContactSubplace/Index" class="btn btn-outline-success">İletişim Bilgilerini Güncelle</a>
+                      <br />
+                    </div>
+                  </div>
+                </div>
+              </div>
+

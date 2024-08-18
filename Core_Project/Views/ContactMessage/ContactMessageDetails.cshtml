@@ -1,0 +1,19 @@
+﻿@model EntityLayer.Concrete.Message
+@{
+    ViewData["Title"] = "ContactMessageDetails";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<form class="form-group">
+    @Html.HiddenFor(x=>x.MessageID)
+
+    @Html.Label("Gönderen")
+    @Html.TextBoxFor(x=>x.Name, new{@class = "form-control"})
+    <br />
+    @Html.Label("Gönderen Mail")
+    @Html.TextBoxFor(x=>x.Mail, new{@class = "form-control"})
+    <br />
+    @Html.Label("Mesaj")
+    @Html.TextAreaFor(x=>x.Content,10,50, new {@class = "form-control"})
+</form>
+

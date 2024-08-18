@@ -1,0 +1,46 @@
+﻿@using EntityLayer.Concrete
+@model List<WriterMessage>
+@{
+    ViewData["Title"] = "RecievedMessageList";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Gelen Kutusu</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Gönderici Adı</th>
+                            <th>Mail Adresi</th>
+                            <th>Konu</th>
+                            <th>Mesaj İçeriği</th>
+                            <th>Tarih</th>
+                            <th>Sil</th>
+                            <th>Mesajı Gör</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model){
+                          <tr>
+                            <td>@item.SenderName</td>
+                            <td>@item.Sender</td>
+                            <td>@item.Subject</td>
+                            <td>@item.MessageContent</td>
+                            <td>@(((DateTime)item.Date).ToString("dd MMMMMMMM yyyy"))</td>
+                             <td><a href="/AdminMessage/RecievedMessageDelete/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+                             <td><a href="/AdminMessage/ReceivedMessageDetails/@item.Id" class="btn btn-outline-info">Detaylar</a></td>
+                            </tr>
+                          }
+                        </tbody>
+                      </table>  
+                      <br />
+                          <a href="/AdminMessage/SendMessage" class="btn btn-outline-light">Mesaj Gönder</a>
+                          <a href="/AdminMessage/SentMessageList" class="btn btn-outline-success">Gönderilen Mesajlar</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
