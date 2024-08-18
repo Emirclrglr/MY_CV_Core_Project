@@ -23,10 +23,6 @@ namespace Core_Project.Controllers
             return RedirectToAction("Index", "Default");
         }
 
-        public IActionResult Test()
-        {
-            var val = "test";
-            return View();
-        }
+       
     }
 }
